@@ -4,6 +4,7 @@
 import sys
 from PyQt5.QtWidgets import (QWidget, QToolTip,
     QPushButton, QApplication)
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QIcon
 from PyQt5.QtGui import QFont
 
@@ -20,11 +21,10 @@ class Example(QWidget):
         QToolTip.setFont(QFont("SansSerif", 10))
         self.setToolTip('This is a <b>QWidget</b> widget')
 
-        btn = QPushButton('Button', self)
-        btn.setToolTip('This is a <b>QPushButton</b> widget')
+        btn = QPushButton('Quit', self)
+        btn.clicked.connect(QCoreApplication.instance().quit)
         btn.resize(btn.sizeHint())
-        btn.move(50, 50)
-        
+        btn.move(1200, 650)        
         self.setGeometry(300, 300, 1366, 768)
         self.setWindowTitle('Not dangerous math')
         self.setWindowIcon(QIcon('/home/alex/TestPySide/48.png'))
